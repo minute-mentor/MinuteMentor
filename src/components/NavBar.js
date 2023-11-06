@@ -29,7 +29,7 @@ export default function NavBar() {
         <div class="nav" style={{fontSize:"20px"}}>
             <a className="smoothscroll px-2 pt-2" href="#home" style={{color:'white',fontSize:"20px",textDecoration:"none"}}>Home</a>
             <a className="smoothscroll px-2 pt-2" href="#about" style={{color:'white',fontSize:"20px",textDecoration:"none"}}>About</a>
-            <a className="smoothscroll px-2 pt-2" href="#about" style={{color:'white',fontSize:"20px",textDecoration:"none"}}>Contact</a>
+            <a className="smoothscroll px-2 pt-2" href="#contact" style={{color:'white',fontSize:"20px",textDecoration:"none"}}>Contact</a>
 
         </div>
         
