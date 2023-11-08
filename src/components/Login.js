@@ -3,11 +3,15 @@ import backImage from '../../src/images/backtwo.jpg'
 import logoImage from '../../src/images/logoimg.png'
 import mailLogo from '../../src/images/mail.png'
 import passlLogo from '../../src/images/pass.png'
+import { Link } from "react-router-dom";
+
+import CalenderComp from './CalenderComp'
 
 
 export default function Login() {
   return (
     <section id="home">
+     
       <div style={{backgroundImage:`url(${backImage})`,backgroundRepeat:"no-repeat"}}>
       
 
@@ -58,10 +62,14 @@ export default function Login() {
                                                 
                                                   
                                                   <center className="p-4">
+
+                                                  
+                                                  <Link to="/m-panel" className="text-light"><button type="submit" className="btn btn-success btn-rounded waves-effect waves-light m-auto shadow-lg"  style={{width:"50%",borderRadius:"40px",fontSize:"20px"}} ><b>Login</b></button></Link>
                                               
-                                                      <button type="submit" className="btn btn-success btn-rounded waves-effect waves-light m-auto shadow-lg"  style={{width:"50%",borderRadius:"40px",fontSize:"20px"}} ><b>Login</b></button>
+                                                      
                                                       <p style={{color:"white",marginTop:"15px"}}> New user ? Click below to Sign Up </p>
-                                                      <button type="submit" className="btn btn-info btn-rounded waves-effect waves-light m-auto shadow-lg"  style={{width:"50%",borderRadius:"40px",fontSize:"20px",color:"white"}}><b>Sign Up</b></button>
+                                                      <Link to="/sign-emp" className="text-light"><button type="submit" className="btn btn-info btn-rounded waves-effect waves-light m-auto shadow-lg"  style={{width:"50%",borderRadius:"40px",fontSize:"20px",color:"white"}}><b>Sign Up</b></button></Link>
+                                                      
                                                       
                                                   </center>
 
@@ -78,6 +86,8 @@ export default function Login() {
        </div>
         
     </div>
+
+
 
     </section>
     

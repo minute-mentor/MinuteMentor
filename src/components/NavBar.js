@@ -1,6 +1,6 @@
 import React from 'react'
 import bgImg from '../../src/images/navtop.jpg'
-
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   return (
@@ -27,9 +27,15 @@ export default function NavBar() {
 
     <nav class="navbar  ms-5 me-5 rounded-top" style={{padding:"7.9999px",background:"rgba(0, 0, 0, 0.69)"}}>
         <div class="nav" style={{fontSize:"20px"}}>
-            <a className="smoothscroll px-2 pt-2" href="#home" style={{color:'white',fontSize:"20px",textDecoration:"none"}}>Home</a>
-            <a className="smoothscroll px-2 pt-2" href="#about" style={{color:'white',fontSize:"20px",textDecoration:"none"}}>About</a>
-            <a className="smoothscroll px-2 pt-2" href="#contact" style={{color:'white',fontSize:"20px",textDecoration:"none"}}>Contact</a>
+
+            <Link to="/m-home" className="text-light" style={{textDecoration:"none"}}><a className="smoothscroll px-2 pt-2" href="#home" style={{color:'white',fontSize:"20px",textDecoration:"none"}}>Home</a></Link>
+
+
+            
+            <Link to="/m-about" className="text-light" style={{textDecoration:"none"}}> <a className="smoothscroll px-2 pt-2" href="#about" style={{color:'white',fontSize:"20px",textDecoration:"none"}}>About</a></Link>
+           
+            <Link to="/m-contact" className="text-light" style={{textDecoration:"none"}}><a className="smoothscroll px-2 pt-2" href="#contact" style={{color:'white',fontSize:"20px",textDecoration:"none"}}>Contact</a></Link>
+            
 
         </div>
         

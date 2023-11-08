@@ -7,6 +7,7 @@ import passlLogo from '../../src/images/pass.png'
 import NavBar from './NavBar';
 import About from './About';
 import Contact from './Contact';
+import { Link } from "react-router-dom";
 
 
 export default function SignUp() {
@@ -171,7 +172,9 @@ export default function SignUp() {
                                               
                                                       <button type="submit" className="btn btn-success btn-rounded waves-effect waves-light m-auto shadow-lg"  style={{width:"50%",borderRadius:"40px",fontSize:"20px"}} ><b>Create Account</b></button>
                                                       <p style={{color:"white",marginTop:"15px"}}> Existing user ? Click below to goto login page </p>
-                                                      <button type="submit" className="btn btn-info btn-rounded waves-effect waves-light m-auto shadow-lg"  style={{width:"50%",borderRadius:"40px",fontSize:"20px",color:"white"}}><b>Login</b></button>
+
+                                                      <Link to="/m-home" className="text-light"> <button type="submit" className="btn btn-info btn-rounded waves-effect waves-light m-auto shadow-lg"  style={{width:"50%",borderRadius:"40px",fontSize:"20px",color:"white"}}><b>Login</b></button></Link>
+                                                     
                                                       
                                                   </center>
 
