@@ -1,14 +1,62 @@
-import React from 'react'
+import React, { useState } from 'react'
 import backImage from '../../src/images/backtwo.jpg'
 import logoImage from '../../src/images/logoimg.png'
 import mailLogo from '../../src/images/mail.png'
 import passlLogo from '../../src/images/pass.png'
 import { Link } from "react-router-dom";
+import Axios from "axios";
 
 import CalenderComp from './CalenderComp'
 
 
-export default function Login() {
+export default function Login() 
+{
+
+  let uname="emp1";
+  var relogin=0;
+
+  const handleClick = ()=>
+  {
+    const data={DATE:"November 10th 2023",status: "present",username:uname,duration:"0"}
+
+    Axios.get("http://localhost:4000/attendanceRoute")
+    .then((res)=>
+    {
+
+      for (let index = 0; index < res.data.length; index++) 
+        {
+            if(res.data[index].username===uname&&res.data[index].DATE==="November 10th 2023")
+            {
+                relogin=1; 
+                alert("Welcome Back !")
+                console.log(relogin)
+            } 
+        }
+
+        if(relogin==0)
+        {
+          Axios.post("http://localhost:4000/attendanceRoute/create-a",data)
+          .then((res)=>{
+          if(res.status === 200)
+          {
+              alert("Marked Present");
+          }
+          else{
+              Promise.reject();
+          }
+
+          }).catch((err)=>alert(err));
+        }
+
+    });
+
+   
+
+  }
+  
+
+
+
   return (
     <section id="home">
      
@@ -17,10 +65,6 @@ export default function Login() {
 
       <div className="row">
     
-        
-          
-        
-                  
                   <div className="col-5 pt-1 " >
                    
                     <div className="py-5" style={{height:"100%"}}>
@@ -64,7 +108,7 @@ export default function Login() {
                                                   <center className="p-4">
 
                                                   
-                                                  <Link to="/m-panel" className="text-light"><button type="submit" className="btn btn-success btn-rounded waves-effect waves-light m-auto shadow-lg"  style={{width:"50%",borderRadius:"40px",fontSize:"20px"}} ><b>Login</b></button></Link>
+                                                  <Link to={"/m-panel/"+uname} className="text-light"><button onClick={handleClick} type="submit" className="btn btn-success btn-rounded waves-effect waves-light m-auto shadow-lg"  style={{width:"50%",borderRadius:"40px",fontSize:"20px"}} ><b>Login</b></button></Link>
                                               
                                                       
                                                       <p style={{color:"white",marginTop:"15px"}}> New user ? Click below to Sign Up </p>
