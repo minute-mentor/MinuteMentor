@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import main from '../../src/images/main.png'
 import { Link } from "react-router-dom";
+import axios from "axios";
+import moment from 'moment'
 
 const SidebarContainer = styled.div`
     width: 20%;
@@ -61,6 +63,50 @@ export default function Sidebar(props)
 {
     let _id = props.id;
     let uname = props.uname;
+    let lt = props.lt;
+
+    const [idTime,setIdTime] = useState();
+
+    
+    axios.get("http://localhost:4000/attendanceRoute")
+    .then((res)=>{
+        for (let index = 0; index < res.data.length; index++) 
+        {
+            if(res.data[index].email===uname&&res.data[index].DATE===moment().format('MMMM Do YYYY'))
+            {
+                setIdTime(res.data[index]._id);
+            }
+            
+            
+        }
+    })
+
+
+
+
+
+    const tcal = () =>
+    {
+        const duration2 = Math.floor((Date.now() - lt) / 1000);
+        console.log(duration2);
+
+        const data={_id:idTime,DATE:moment().format('MMMM Do YYYY'),status:"present",email:uname,duration:duration2 };
+        axios.put("http://localhost:4000/attendanceRoute/update-att/"+idTime,data)
+        .then((res)=>{
+            if(res.status === 200)
+            {
+                console.log("duration updated")
+
+            }
+            else{
+                Promise.reject();
+            }
+        })
+        .catch((err)=>alert(err));
+
+
+
+    }
     
   return (
     <SidebarContainer>
@@ -77,7 +123,7 @@ export default function Sidebar(props)
                 </List>
             </div>
             
-            <Link to="/"  style={{textDecoration:"none",width:"100%"}}><Button style={{width:"94%",margin:"8px"}}>Sign Out</Button></Link>
+            <Link to="/"  style={{textDecoration:"none",width:"100%"}}><Button onClick={tcal} style={{width:"94%",margin:"8px"}}>Sign Out</Button></Link>
         </SidebarContainer>
   )
 }

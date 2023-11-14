@@ -10,6 +10,8 @@ const UserPage = () => {
   const {uname} = useParams();
   const [_id,setID] = useState();
 
+  const [loginTime,setloginTime] = useState();
+
   useEffect(()=>{
     axios.get("http://localhost:4000/empRoute")
     .then((res)=>
@@ -19,6 +21,7 @@ const UserPage = () => {
       {
           if(res.data[index].email===uname)
           {
+              setloginTime(Date.now())
               console.log("found it two");
               setID(res.data[index]._id);
               console.log(res.data[index]._id)// this will only run once
@@ -34,7 +37,7 @@ const UserPage = () => {
 
   return (
     <div>
-      <Sidebar id={_id} uname={uname}/>
+      <Sidebar id={_id} uname={uname} lt={loginTime}/>
       <MainArea uname={uname}/>
     </div>
   );
