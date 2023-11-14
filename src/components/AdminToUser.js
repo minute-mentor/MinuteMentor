@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React,{ useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import styled from 'styled-components';
 
 import Calendar from 'react-calendar';
@@ -8,9 +9,12 @@ import profile_pic from '../../src/images/profile_pic.png'
 import CalenderComp from './CalenderComp';
 import AttList from './AttList';
 import axios from "axios";
+import { Link } from "react-router-dom";
+
+
 
 const MainContainer = styled.div`
-  margin-left: 20%;
+  
   padding: 20px;
   position: relative;
   background-image: url('${main}');
@@ -55,14 +59,13 @@ const CalendarContainer = styled.div`
 `;
 
 
-
-export default function MainArea(props) 
+export default function AdminToUser() 
 {
-   let uname = props.uname;
-   const [currentTime, setCurrentTime] = useState(new Date());
+    const {uname} = useParams();
+    const [currentTime, setCurrentTime] = useState(new Date());
 
 
-   const [_id,setId] = useState();
+    const [_id,setId] = useState();
     const [fname,setFname] = useState();
     const [email,setEmail] = useState();
     const [phone,setPhone] = useState();
@@ -72,56 +75,41 @@ export default function MainArea(props)
     const [addr,setAddr] = useState();
     const [gender,setGender] = useState();
     //const [uname,setUname] = useState();
-
     useEffect(()=>{
-      axios.get("http://localhost:4000/empRoute")
-      .then((res)=>
-      {
-
-        for (let index = 0; index < res.data.length; index++) 
+        axios.get("http://localhost:4000/empRoute")
+        .then((res)=>
         {
-            if(res.data[index].email===uname)
-            {
-                console.log("found it");
-                setFname(res.data[index].fullname);
-                //setEmail(res.data[index].email);
-                setPhone(res.data[index].phone);
-                setRole(res.data[index].role);
-                setPassword(res.data[index].password);
-                setDob(res.data[index].dob);
-                setAddr(res.data[index].addr);
-                setGender(res.data[index].gender);
-                setId(res.data[index]._id); // this will only run once
-                break; // exit the loop
-            } 
+  
+          for (let index = 0; index < res.data.length; index++) 
+          {
+              if(res.data[index].email===uname)
+              {
+                  console.log("found it");
+                  setFname(res.data[index].fullname);
+                  //setEmail(res.data[index].email);
+                  setPhone(res.data[index].phone);
+                  setRole(res.data[index].role);
+                  setPassword(res.data[index].password);
+                  setDob(res.data[index].dob);
+                  setAddr(res.data[index].addr);
+                  setGender(res.data[index].gender);
+                  setId(res.data[index]._id); // this will only run once
+                  break; // exit the loop
+              } 
+          }
+          
         }
-        
-      }
-        
-      );
-    },[]); 
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
-  const profilePic = process.env.PUBLIC_URL + '/profile_pic.png';
-
-  const greeting = currentTime.getHours() < 12 ? 'Good Morning' : 'Good Evening';
+          
+        );
+      },[]); 
 
   return (
-    <MainContainer>
-      
-      <Card>
-        <TimeDisplay>{currentTime.toLocaleTimeString()}</TimeDisplay>
-        <GreetingDisplay>{greeting}, {fname}</GreetingDisplay>
-      </Card>
+    <div>
+         <MainContainer>
+            <Card>
+            <Link to="/admin-home" className="text-light"><button class="btn btn-danger btn-rounded waves-effect waves-light m-auto shadow-lg">Go Back</button></Link>
+                
+            </Card>
       <Card>
         <ProfileContainer>
           <img src={profile_pic} alt="Profile" />
@@ -131,21 +119,25 @@ export default function MainArea(props)
             <UserDataLine>Designation: {role}</UserDataLine>
             <UserDataLine>Phone: {phone}</UserDataLine>
             <UserDataLine>Email: {uname}</UserDataLine>
+            <UserDataLine>Gender: {gender}</UserDataLine>
+            <UserDataLine>Date of Birth: {dob}</UserDataLine>
+            <UserDataLine>Address: {addr}</UserDataLine>
           </UserData>
+              
+                
+              <CalenderComp uname={uname}/>
         </ProfileContainer>
       </Card>
       <Card>
         <div class="row">
-            <div class="col-lg-6 col-sm-12">
-            <h2 class="text-white" style={{marginLeft:"28%"}}>Attendance Calender</h2>
-              
-                
-                    <CalenderComp uname={uname}/>
-                
-            </div>
-            <div class="col-lg-6 col-sm-12">
-            <h2 class="text-white" style={{marginLeft:"20%"}}>Attendance Information</h2>
+            
+            <div class="col-lg-12 col-sm-12">
+                <center>
+                <h2 class="text-white">Attendance Data</h2>
                 <AttList uname={uname}/>
+
+                </center>
+           
 
             </div>
 
@@ -155,7 +147,7 @@ export default function MainArea(props)
       </Card>
       
     </MainContainer>
-  );
+      
+    </div>
+  )
 }
-
-

@@ -5,7 +5,7 @@ export default function AttListRow(props)
 {
     const [newTime,setNewTime] = useState();
 
-    const {_id,status,DATE,username,duration} = props.obj;
+    const {_id,status,DATE,email,duration} = props.obj;
 
     useEffect(()=>
     {

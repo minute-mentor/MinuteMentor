@@ -35,7 +35,9 @@ export default function NavBar() {
             <Link to="/m-about" className="text-light" style={{textDecoration:"none"}}> <a className="smoothscroll px-2 pt-2" href="#about" style={{color:'white',fontSize:"20px",textDecoration:"none"}}>About</a></Link>
            
             <Link to="/m-contact" className="text-light" style={{textDecoration:"none"}}><a className="smoothscroll px-2 pt-2" href="#contact" style={{color:'white',fontSize:"20px",textDecoration:"none"}}>Contact</a></Link>
+            <Link to="/admin-login" className="text-light" style={{textDecoration:"none"}}><a className="smoothscroll px-2 pt-2" href="#contact" style={{color:'white',fontSize:"20px",textDecoration:"none"}}>Administrator</a></Link>
             
+
 
         </div>
         

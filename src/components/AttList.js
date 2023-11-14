@@ -19,10 +19,10 @@ export default function AttList(props)
     {
       let arrayOfMrs = [];
       setMyData(res.data);
-      console.log(res.data[0].username);
+      console.log(res.data[0].email);
       for (let index = 0; index < res.data.length; index++) 
         {
-            if(res.data[index].username===uname)
+            if(res.data[index].email===uname)
             {
               arrayOfMrs.push(res.data[index]);
              

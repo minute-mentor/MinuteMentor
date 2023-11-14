@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import main from '../../src/images/main.png'
+import { Link } from "react-router-dom";
 
 const SidebarContainer = styled.div`
     width: 20%;
@@ -55,28 +56,28 @@ const Button = styled.button`
     }
 `;
 
-const Sidebar = () => {
-    return (
-        <SidebarContainer>
+
+export default function Sidebar(props) 
+{
+    let _id = props.id;
+    let uname = props.uname;
+    
+  return (
+    <SidebarContainer>
             <div>
                 <Title>MINUTE<br />MENTOR</Title>
                 <Hr />
                 <List>
-                    <ListItem>Dashboard</ListItem>
+                    <ListItem><Link to={"/m-panel/"+uname}  style={{textDecoration:"none",width:"100%"}}>Dashboard</Link></ListItem>
                     <Hr />
-                    <ListItem>Edit Profile</ListItem>
-                    <Hr />
-                    <ListItem>Private Files</ListItem>
-                    <Hr />
-                    <ListItem>TO-DO</ListItem>
+                    <ListItem><Link to={"/m-edit/"+_id}  style={{textDecoration:"none",width:"100%"}}>Edit Profile</Link></ListItem>
                     <Hr />
                     <ListItem>Leave Requests</ListItem>
                     <Hr />
                 </List>
             </div>
-            <Button>Sign Out</Button>
+            
+            <Link to="/"  style={{textDecoration:"none",width:"100%"}}><Button style={{width:"94%",margin:"8px"}}>Sign Out</Button></Link>
         </SidebarContainer>
-    );
-};
-
-export default Sidebar;
+  )
+}

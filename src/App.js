@@ -12,6 +12,13 @@ import EmpInfo from './components/EmpInfo';
 import EmpList from './components/EmpList';
 import AttList from './components/AttList';
 import UserPage from './components/UserPage';
+import Teso from './components/Teso';
+import AdminPage from './components/AdminPage';
+import AdminToUser from './components/AdminToUser';
+import AdminLogin from './components/AdminLogin';
+import EditProfile from './components/EditProfile';
+
+
 
 
 
@@ -21,15 +28,27 @@ function App() {
     <div style={{overflowX:"hidden"}}>
       <HashRouter>
       
-        <Routes>
-          <Route path="/" element={<div><NavBar/><Login/><About/><Contact/></div>}/>
-          <Route path="/m-home" element={<div><NavBar/><Login/><About/><Contact/></div>}/>
-          <Route path="/m-about" element={<div><NavBar/><About/></div>}/>
-          <Route path="/m-contact" element={<div><NavBar/><Contact/></div>}/>
-          <Route path="/sign-emp" element={<div><NavBar/><SignUp/><About/><Contact/></div>}/>
-          <Route path="/m-panel/:uname" element={<div><UserPage/></div>}/>
-        </Routes>
-      </HashRouter>
+      <Routes>
+        <Route path="/" element={<div><NavBar/><Login/><About/><Contact/></div>}/>
+        <Route path="/admin-home" element={<div><AdminPage/></div>}/>
+        <Route path="/admin-user/:uname" element={<AdminToUser/>}></Route>
+        <Route path="/admin-login" element={<div><NavBar/><AdminLogin/></div>}></Route>
+        <Route path="/m-home" element={<div><NavBar/><Login/><About/><Contact/></div>}/>
+        <Route path="/m-about" element={<div><NavBar/><About/></div>}/>
+        <Route path="/m-contact" element={<div><NavBar/><Contact/></div>}/>
+        <Route path="/sign-emp" element={<div><NavBar/><SignUp/><About/><Contact/></div>}/>
+        <Route path="/m-panel/:uname" element={<div><UserPage/></div>}/>
+        <Route path="/m-edit/:id" element={<div><EditProfile/></div>}/>
+
+        <Route path="/m-teso/:hope" element={<div><Teso/></div>}/>
+        
+      </Routes>
+    </HashRouter>
+      
+      
+      
+      
+      
       
 
 
@@ -42,9 +61,23 @@ function App() {
 
      
       {/* 
+      
+      
 
       
       <HashRouter>
+      <HashRouter>
+      
+      <Routes>
+        <Route path="/" element={<div><NavBar/><Login/><About/><Contact/></div>}/>
+        <Route path="/m-home" element={<div><NavBar/><Login/><About/><Contact/></div>}/>
+        <Route path="/m-about" element={<div><NavBar/><About/></div>}/>
+        <Route path="/m-contact" element={<div><NavBar/><Contact/></div>}/>
+        <Route path="/sign-emp" element={<div><NavBar/><SignUp/><About/><Contact/></div>}/>
+        <Route path="/m-panel/:uname" element={<div><UserPage/></div>}/>
+        <Route path="/m-teso/:hope" element={<div><Teso/></div>}/>
+      </Routes>
+    </HashRouter>
       
         <Routes>
           <Route path="/" element={<div><NavBar/><Login/><About/><Contact/></div>}/>

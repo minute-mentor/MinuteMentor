@@ -28,7 +28,7 @@ export default function CalenderComp(props)
 
     for (let index = 0; index < myData.length; index++) 
     {
-      if(myData[index].username===uname)
+      if(myData[index].email===uname)
       {
           if(view === 'month' && moment(date).format("MMMM Do YYYY") === myData[index].DATE)
           {

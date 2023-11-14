@@ -38,7 +38,7 @@ export default function EmpList()
   return (
 
     <div class="conatiner ">
-        <table style={{maxWidth:"60%",margin:"50px auto"}} className="table table-bordered table-striped table-success m-4 shadow-lg">
+        <table style={{maxWidth:"90%",margin:"50px auto"}} className="table table-bordered table-striped table-success m-4 shadow-lg">
             <thead>
                 <tr>
                 <th class="text-center">Name</th>

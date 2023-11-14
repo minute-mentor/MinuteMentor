@@ -4,10 +4,14 @@ import mailLogo from '../../src/images/mail.png'
 import phoneLogo from '../../src/images/phone.png'
 import addressLogo from '../../src/images/address.png'
 import contactLogo from '../../src/images/contactImg.jpg'
+import { useParams } from 'react-router-dom'
 
-export default function Contact() {
+export default function Contact() 
+{
+
   return (
     <section id="contact" class="ftco-section" style={{backgroundImage:`url(${contactLogo})`,backgroundRepeat:"no-repeat"}}>
+		
 		<div class="container" >
 		
 			<div class="row justify-content-center mt-0 pt-5">
