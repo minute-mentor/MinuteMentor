@@ -84,7 +84,7 @@ export default function SignUp() {
             else if(form.checkValidity())
             {
               const data={fullname:fname,email:em,phone:ph,role:ro,password:pas,dob:dat,gender:gen,addr:ad}
-              Axios.get("http://localhost:4000/empRoute").then((res)=>{
+              Axios.get("https://minute-mentor.onrender.com/empRoute").then((res)=>{
                 for (let index = 0; index < res.data.length; index++) 
                 {
                     if(res.data[index].email===em)
@@ -99,7 +99,7 @@ export default function SignUp() {
   
                 if(exist===0)
                 {
-                  Axios.post("http://localhost:4000/empRoute/create-emp",data)
+                  Axios.post("https://minute-mentor.onrender.com/empRoute/create-emp",data)
               .then((res)=>{
               if(res.status === 200)
               {
@@ -160,7 +160,7 @@ export default function SignUp() {
       {
         const data={fullname:fname,email:em,phone:ph,role:ro,password:pas,dob:dat,gender:gen,addr:ad}
 
-            Axios.get("http://localhost:4000/empRoute").then((res)=>{
+            Axios.get("https://minute-mentor.onrender.com/empRoute").then((res)=>{
               for (let index = 0; index < res.data.length; index++) 
               {
                   if(res.data[index].email===em)
@@ -175,7 +175,7 @@ export default function SignUp() {
 
               if(exist===0)
               {
-                Axios.post("http://localhost:4000/empRoute/create-emp",data)
+                Axios.post("https://minute-mentor.onrender.com/empRoute/create-emp",data)
             .then((res)=>{
             if(res.status === 200)
             {

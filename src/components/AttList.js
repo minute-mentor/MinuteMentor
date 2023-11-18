@@ -14,7 +14,7 @@ export default function AttList(props)
 
 
   useEffect(()=>{
-    axios.get("http://localhost:4000/attendanceRoute")
+    axios.get("https://minute-mentor.onrender.com/attendanceRoute")
     .then((res)=>
     {
       let arrayOfMrs = [];
@@ -48,11 +48,11 @@ export default function AttList(props)
 
   return (
     <div class="conatiner ">
-        <table style={{maxWidth:"100%",margin:"50px auto"}} className="table table-bordered table-striped table-info m-0 shadow-lg">
-            <thead>
+        <table style={{maxWidth:"100%",margin:"50px auto"}} className="table align-middle mb-0 bg-white shadow-lg">
+            <thead class="bg-light">
                 <tr>
-                <th class="text-center">Date</th>
-                <th class="text-center">Status</th>
+                <th class="text-center"><h2>Date</h2></th>
+                <th class="text-center"><h2>Status</h2></th>
                 <th class="text-center">Duration<br/> hour : minute : seconds</th>
                 </tr>
 

@@ -24,9 +24,14 @@ export default function AttListRow(props)
   return (
     <tr>
 
-        <td>{DATE}</td>
-        <td>{status}</td>
-        <td>{newTime}</td>
+      
+        <td class="text-center" >{DATE}</td>
+        <td class="text-center">{status}</td>
+        <td class="text-center">{newTime}</td>
+
+      
+
+        
         
     </tr>
   )

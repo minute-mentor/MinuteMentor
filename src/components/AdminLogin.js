@@ -21,8 +21,8 @@ export default function AdminLogin()
       }
 
   return (
-    <div class="container">
-        <form onSubmit={handleSubmit} class="shadow-lg needs-validation" noValidate>
+    <div >
+        <form onSubmit={handleSubmit} class=" p-4 shadow-lg needs-validation mt-5" style={{maxWidth:"50%",margin:"0px auto"}} noValidate>
         
         <div class="mb-3">
              <label for="exampleInputPassword1" class="form-label">Administrator Passcode :</label>
@@ -30,6 +30,7 @@ export default function AdminLogin()
         </div>
         
         <button type="submit" class="btn btn-primary">Submit</button>
+        
         </form>
       
     </div>

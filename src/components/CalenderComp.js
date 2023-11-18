@@ -14,7 +14,7 @@ export default function CalenderComp(props)
 
 
   useEffect(()=>{
-    axios.get("http://localhost:4000/attendanceRoute")
+    axios.get("https://minute-mentor.onrender.com/attendanceRoute")
     .then((res)=>
       setMyData(res.data)
     );

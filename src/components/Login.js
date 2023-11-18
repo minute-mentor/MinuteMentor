@@ -30,11 +30,19 @@ export default function Login()
   var relogin=0;
   var reUser=0;
   var h = "tp";
+  let eightAM = moment().startOf('day').add(8, 'hours');
+  let currentTime = moment();
+  
+  var tod = "Present Login Time : "+currentTime.format("HH:mm:ss");
+  if (currentTime.isAfter(eightAM))
+  {
+    tod="Present (Late) Login Time : "+currentTime.format("HH:mm:ss");
+  }
   const currentDate = moment().format('MMMM Do YYYY');
 
   const newClick =()=>
   {
-    Axios.get("http://localhost:4000/empRoute")
+    Axios.get("https://minute-mentor.onrender.com/empRoute")
            .then((res)=>
     {
 
@@ -50,9 +58,9 @@ export default function Login()
         if (reUser==1) 
         {
           // redirect to another page
-          const data={DATE:currentDate,status: "present",email:uname,duration:"0"}
+          const data={DATE:currentDate,status:tod,email:uname,duration:"0"}
 
-          Axios.get("http://localhost:4000/attendanceRoute")
+          Axios.get("https://minute-mentor.onrender.com/attendanceRoute")
                  .then((res)=>
           {
       
@@ -68,7 +76,7 @@ export default function Login()
       
               if(relogin==0)
               {
-                Axios.post("http://localhost:4000/attendanceRoute/create-a",data)
+                Axios.post("https://minute-mentor.onrender.com/attendanceRoute/create-a",data)
                 .then((res)=>{
                 if(res.status === 200)
                 {

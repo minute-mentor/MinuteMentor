@@ -122,8 +122,7 @@ export default function AdminPage()
                 <List>
                     <ListItem>Dashboard</ListItem>
                     <Hr />
-                    <ListItem>Leave Requests</ListItem>
-                    <Hr />
+                    
                 </List>
             </div>
             

@@ -68,7 +68,7 @@ export default function EditProfile()
 
 
     
-    axios.get("http://localhost:4000/empRoute")
+    axios.get("https://minute-mentor.onrender.com/empRoute")
     .then((res)=>{
         for (let index = 0; index < res.data.length; index++) 
         {
@@ -83,7 +83,7 @@ export default function EditProfile()
 
 
     useEffect(()=>{
-        axios.get("http://localhost:4000/empRoute/update-emp/"+id)
+        axios.get("https://minute-mentor.onrender.com/empRoute/update-emp/"+id)
         .then((res)=>{
             if(res.status === 200)
             {
@@ -105,7 +105,7 @@ export default function EditProfile()
 
     const handleSubmit=()=>{
         const data={_id:newData[0],fullname:newData[1],email:newData[2],phone:newData[3],role:newData[4],password:newData[5],dob:newData[6],gender:newData[7],addr:newData[8]};
-        axios.put("http://localhost:4000/empRoute/update-emp/"+id,data)
+        axios.put("https://minute-mentor.onrender.com/empRoute/update-emp/"+id,data)
         .then((res)=>{
             if(res.status === 200)
             {

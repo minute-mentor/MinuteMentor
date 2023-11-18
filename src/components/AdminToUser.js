@@ -76,7 +76,7 @@ export default function AdminToUser()
     const [gender,setGender] = useState();
     //const [uname,setUname] = useState();
     useEffect(()=>{
-        axios.get("http://localhost:4000/empRoute")
+        axios.get("https://minute-mentor.onrender.com/empRoute")
         .then((res)=>
         {
   

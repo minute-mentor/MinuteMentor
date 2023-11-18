@@ -13,7 +13,7 @@ export default function EmpList()
     const[arr,setArr] = useState([]);
 
     useEffect(()=>{
-      Axios.get("http://localhost:4000/empRoute/")
+      Axios.get("https://minute-mentor.onrender.com/empRoute/")
       .then((res)=>{
         if(res.status === 200)
         {
@@ -38,8 +38,8 @@ export default function EmpList()
   return (
 
     <div class="conatiner ">
-        <table style={{maxWidth:"90%",margin:"50px auto"}} className="table table-bordered table-striped table-success m-4 shadow-lg">
-            <thead>
+        <table style={{maxWidth:"90%",margin:"50px auto"}} className="table align-middle m-4 bg-white shadow-lg">
+            <thead class="bg-light">
                 <tr>
                 <th class="text-center">Name</th>
                 <th class="text-center">Designation</th>

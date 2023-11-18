@@ -64,17 +64,20 @@ export default function Sidebar(props)
     let _id = props.id;
     let uname = props.uname;
     let lt = props.lt;
+    
+    const[stat,setstat]=useState();
 
     const [idTime,setIdTime] = useState();
 
     
-    axios.get("http://localhost:4000/attendanceRoute")
+    axios.get("https://minute-mentor.onrender.com/attendanceRoute")
     .then((res)=>{
         for (let index = 0; index < res.data.length; index++) 
         {
             if(res.data[index].email===uname&&res.data[index].DATE===moment().format('MMMM Do YYYY'))
             {
                 setIdTime(res.data[index]._id);
+                setstat(res.data[index].status);
             }
             
             
@@ -90,8 +93,8 @@ export default function Sidebar(props)
         const duration2 = Math.floor((Date.now() - lt) / 1000);
         console.log(duration2);
 
-        const data={_id:idTime,DATE:moment().format('MMMM Do YYYY'),status:"present",email:uname,duration:duration2 };
-        axios.put("http://localhost:4000/attendanceRoute/update-att/"+idTime,data)
+        const data={_id:idTime,DATE:moment().format('MMMM Do YYYY'),status:stat,email:uname,duration:duration2 };
+        axios.put("https://minute-mentor.onrender.com/attendanceRoute/update-att/"+idTime,data)
         .then((res)=>{
             if(res.status === 200)
             {
@@ -118,8 +121,8 @@ export default function Sidebar(props)
                     <Hr />
                     <ListItem><Link to={"/m-edit/"+_id}  style={{textDecoration:"none",width:"100%"}}>Edit Profile</Link></ListItem>
                     <Hr />
-                    <ListItem>Leave Requests</ListItem>
-                    <Hr />
+                   
+                    
                 </List>
             </div>
             

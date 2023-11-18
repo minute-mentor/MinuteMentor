@@ -17,7 +17,7 @@ export default function EmpInfo()
 
     
     useEffect(()=>{
-      axios.get("http://localhost:4000/empRoute")
+      axios.get("https://minute-mentor.onrender.com/empRoute")
       .then((res)=>
       {
         setMyData(res.data)
